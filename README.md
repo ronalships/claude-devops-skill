@@ -205,4 +205,4 @@ PRs welcome for:
 
 Part of a series of tools that make developer pain visible and fixable. See also: [envsnap](https://github.com/ronalships/envsnap), [ghactrace](https://github.com/ronalships/ghactrace).
 
-Built by [@RonalRaj4](https://x.com/RonalRaj4). If this skill saved your team from a 3am page, a ⭐ on the repo is the best way to say thanks.
+Built by [@RonalRaj4](https://x.com/ronalships). If this skill saved your team from a 3am page, a ⭐ on the repo is the best way to say thanks.
