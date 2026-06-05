@@ -1,6 +1,6 @@
 ---
 name: devops-best-practices
-description: Opinionated production-grade DevOps defaults for Terraform, Kubernetes, CI/CD, Docker, cloud security, observability, cost, and disaster recovery. ALWAYS use when generating, reviewing, or modifying any infrastructure code, Kubernetes manifests (Deployment, Service, StatefulSet, Helm, Kustomize), Terraform (.tf, modules, state), Dockerfiles, docker-compose, CI/CD pipelines (.github/workflows, .gitlab-ci.yml, Jenkinsfile), cloud resources (AWS/GCP/Azure), IAM policies, security groups, observability setup (Prometheus, Grafana, OpenTelemetry), or DNS/TLS/CDN config — even if the user does not explicitly ask for "best practices." Prevents the failure modes that hurt production teams most often: missing PDBs, single replicas in prod, `:latest` tags, public S3 buckets, long-lived credentials, missing observability, and CI/CD supply-chain risks. Apply opinionated defaults by default; surface tradeoffs when the user has reason to deviate.
+description: 'Opinionated production-grade DevOps defaults for Terraform, Kubernetes, CI/CD, Docker, cloud security, observability, cost, and disaster recovery. ALWAYS use when generating, reviewing, or modifying any infrastructure code, Kubernetes manifests (Deployment, Service, StatefulSet, Helm, Kustomize), Terraform (.tf, modules, state), Dockerfiles, docker-compose, CI/CD pipelines (.github/workflows, .gitlab-ci.yml, Jenkinsfile), cloud resources (AWS/GCP/Azure), IAM policies, security groups, observability setup (Prometheus, Grafana, OpenTelemetry), or DNS/TLS/CDN config — even if the user does not explicitly ask for best practices. Prevents the failure modes that hurt production teams most often: missing PDBs, single replicas in prod, latest image tags, public S3 buckets, long-lived credentials, missing observability, and CI/CD supply-chain risks. Apply opinionated defaults by default; surface tradeoffs when the user has reason to deviate.'
 ---
 
 # DevOps Best Practices
@@ -117,7 +117,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: app
-          image: registry.example.com/app:sha-abc123  # always a SHA tag, never :latest
+          image: registry.example.com/app:sha-abc123  # always a SHA tag, never latest
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: false
@@ -189,7 +189,7 @@ Never use raw YAML for production deployments — no rollback story, no diff, no
 
 ### What NOT to do
 
-- ❌ `:latest` tags in production — always immutable SHAs or semver-pinned versions
+- ❌ `latest` image tags in production — always immutable SHAs or semver-pinned versions
 - ❌ CPU limits — they cause throttling that's worse than the original problem; set requests, not limits
 - ❌ Single replicas in production — minimum 2 for stateless, 3 for stateful
 - ❌ Missing readiness probes — without them, traffic flows to unready pods during deploys
@@ -449,7 +449,7 @@ When the user asks for any of these, explain the risk before generating:
 - Security group with 0.0.0.0/0 on SSH/RDP — suggest SSM Session Manager or VPN
 - Long-lived AWS access keys in CI — suggest OIDC
 - Kubernetes Deployment with `replicas: 1` for production — flag the SPOF risk
-- `:latest` image tag — flag the rollback impossibility
+- `latest` image tag — flag the rollback impossibility
 - Terraform `local-exec` for cloud resource creation — suggest proper providers
 - Disabling audit logs to "reduce noise" — flag the incident-response cost
 - Custom encryption implementation — never; use platform KMS
