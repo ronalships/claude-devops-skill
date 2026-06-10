@@ -3,6 +3,10 @@
 > Opinionated, production-grade DevOps defaults for Claude Code — so generated infrastructure is right by default, not just "technically correct."
 
 <p align="center">
+  <img src="docs/devops-skill-demo.gif" alt="claude-devops-skill in action" width="800">
+</p>
+
+<p align="center">
   <a href="#install">Install</a> ·
   <a href="#what-it-does">What it does</a> ·
   <a href="#coverage">Coverage</a> ·
